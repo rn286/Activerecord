@@ -13,18 +13,20 @@ abstract class model {
         $db = dbConn::getConnection();
         $statement = $db->prepare($sql);
         $statement->execute();
-        $tableName = get_called_class();
-        $array = get_object_vars($this);
-        $columnString = implode(',', $array);
-        $valueString = ":".implode(',:', $array);
+        
         
 		echo 'I just saved record: ' . $this->id;
 
 	}
 
     private function insert() {
-		$sql = "INSERT INTO " . $this->tableName . "(" . $this->columnString . ") VALUES (" . $this->valueString . ")";
-        return $sql;
+		$tableName = get_called_class();
+        $array = get_object_vars($this);
+        $columnString = implode(',', $array);
+        $valueString = ":".implode(',:', $array);
+		$sql = "INSERT INTO " . $tableName . "(" . $columnString . ") VALUES (" . $valueString . ")";
+        
+		return $sql;
         
 		echo 'I just inserted record' . $this->id;
 
