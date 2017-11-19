@@ -27,6 +27,12 @@ echo "<h2>Select All Records from Accounts</h2><pre>";
 $records = accounts::findall();
 print_r($records);
 
+//Select One >>>remove the ID value for final project
+
+echo '<h2>Select One Record from Accounts</h2><pre>';
+$records = accounts::findOne(4);
+print_r($records);
+
 //Insert
 echo "<h2>Insert 1 Record into Accounts</h2>";
 $data = new account();
