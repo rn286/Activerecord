@@ -8,7 +8,7 @@ abstract class model {
         } else {
             $sql = $this->update();
         }
-        echo $SQL;
+        echo $sql;
 		
         $db = dbConn::getConnection();
         $statement = $db->prepare($sql);
@@ -23,7 +23,7 @@ abstract class model {
 	}
 
     private function insert() {
-		$sql = "INSERT INTO $tableName (" . $columnString . ") VALUES (" . $valueString . ")</br>";
+		$sql = "INSERT INTO " . $this->$tableName . "(" . $this->$columnString . ") VALUES (" . $this->$valueString . ")</br>";
         return $sql;
         
 		echo 'I just inserted record' . $this->id;
