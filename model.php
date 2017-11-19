@@ -20,16 +20,14 @@ abstract class model {
 	}
 
     private function insert() {
-		$tableName = get_called_class();
+		$tableName = $this::getTablename();
         $array = get_object_vars($this);
         $columnString = implode(',', $array);
         $valueString = ":".implode(',:', $array);
 		$sql = "INSERT INTO " . $tableName . "(" . $columnString . ") VALUES (" . $valueString . ")";
         
 		return $sql;
-        
-		echo 'I just inserted record' . $this->id;
-
+        		
 	}
 
 	private function update() {
