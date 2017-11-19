@@ -23,7 +23,7 @@ abstract class model {
 	}
 
     private function insert() {
-		$sql = "INSERT INTO " . $this->tableName() . "(" . $this->$columnString . ") VALUES (" . $this->$valueString . ")";
+		$sql = "INSERT INTO " . $this->tableName . "(" . $this->$columnString . ") VALUES (" . $this->$valueString . ")";
         return $sql;
         
 		echo 'I just inserted record' . $this->id;
