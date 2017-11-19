@@ -37,15 +37,15 @@ print_r($records);
 echo "<h2>Insert 1 Record into Accounts</h2>";
 $data = new account();
 
-//$data->id="";
-//$data->email="joe@ms.com";
-//$data->fname="Joe";
-//$data->lname="Smith";
-//$data->phone="2124803960";
-//$data->birthday="01/01/2000";  
-//$data->gender="M";
-//$data->password="rtkeker";
-//$lastInsertedId=$data->save();
+$data->id="";
+$data->email="joe@ms.com";
+$data->fname="Joe";
+$data->lname="Smith";
+$data->phone="2124803960";
+$data->birthday="01/01/2000";  
+$data->gender="M";
+$data->password="rtkeker";
+$lastInsertedId=$data->save();
 
 //Delete
 //delete one record 
