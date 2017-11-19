@@ -18,12 +18,12 @@ abstract class model {
         $columnString = implode(',', $array);
         $valueString = ":".implode(',:', $array);
         
-		echo 'I just hsaved record: ' . $this->id;
+		echo 'I just saved record: ' . $this->id;
 
 	}
 
     private function insert() {
-		$sql = "INSERT INTO " . $this->$tableName . "(" . $this->$columnString . ") VALUES (" . $this->$valueString . ")</br>";
+		$sql = "INSERT INTO (" . $this->$columnString . ") VALUES (" . $this->$valueString . ")</br>";
         return $sql;
         
 		echo 'I just inserted record' . $this->id;
