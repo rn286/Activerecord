@@ -22,7 +22,7 @@ abstract class model {
     private function insert() {
 		$tableName = $this::getTablename();
         $array = get_object_vars($this);
-        $columnString = implode(',', $array);
+        $columnString = implode(',', array_keys($array));
         $valueString = ":".implode(',:', $array);
 		$sql = "INSERT INTO " . $tableName . "(" . $columnString . ") VALUES (" . $valueString . ")";
         
