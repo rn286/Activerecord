@@ -3,12 +3,13 @@
 abstract class model {
 	protected $tableName;
 	public function save() {
-		if ($this->id = '') {
+		if ($this->id == '') {
             $sql = $this->insert();
         } else {
             $sql = $this->update();
         }
-
+        echo $SQL;
+		
         $db = dbConn::getConnection();
         $statement = $db->prepare($sql);
         $statement->execute();
@@ -17,7 +18,7 @@ abstract class model {
         $columnString = implode(',', $array);
         $valueString = ":".implode(',:', $array);
         
-		echo 'I just saved record: ' . $this->id;
+		echo 'I just hsaved record: ' . $this->id;
 
 	}
 
