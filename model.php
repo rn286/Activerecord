@@ -2,7 +2,7 @@
 
 
 function prepareValues($s) {
-    return "‘" . addslashes($) . "‘";
+    return "‘" . addslashes($s) . "‘";
 }
 
 abstract class model {
