@@ -39,10 +39,10 @@ abstract class model {
 	public function delete($id) {
         $db = dbConn::getConnection();
         $tableName = $this::getTablename();
-		$sql = 'DELETE FROM '. $tableName . ' WHERE user_id=?';
+		$sql = 'DELETE FROM '. $tableName . ' WHERE id=?';
         $statement = $db->prepare($sql);
         
-		return $statement->execute($id);
+		return $statement->execute(array($id));
 }
 		
 

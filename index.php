@@ -54,9 +54,8 @@ print_r($records);
 //Delete one record 
 echo "<h2>Delete One Record</h2>"; 
 
-
 $data = new account(); 
-if (data->delete($lastInsertedId))
+if ($data->delete($lastInsertedId))
 	echo "success";
 else
   echo "failure";
