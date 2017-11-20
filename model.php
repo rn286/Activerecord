@@ -16,10 +16,10 @@ abstract class model {
 		
         $db = dbConn::getConnection();
         $statement = $db->prepare($sql);
-        $statement->execute($array);
+        $array = get_object_vars($this);
+		$statement->execute($array);
         
-        
-		echo 'I just saved record: ' . $this->id;
+        echo 'I just saved record: ' . $this->id;
 
 	}
 
