@@ -46,8 +46,10 @@ $data->birthday="01/01/2000";
 $data->gender="M";
 $data->password="rtkeker";
 $lastInsertedId=$data->save();
+echo "I just saved record $lastInsertedId <br>";
 
-echo "I just saved record $lastInsertedId";
+$records = accounts::findOne($lastInsertedId);
+print_r($records);
 
 //Delete
 //delete one record 
