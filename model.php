@@ -1,5 +1,12 @@
 <?php
 
+function prepareValues($s)  {
+
+    return $key . ' = ":"' . $key . '"';
+
+}
+
+
 abstract class model {
 	public function save() {
 		if ($this->id == '') {
@@ -7,16 +14,17 @@ abstract class model {
         } else {
             $sql = $this->update();
         }
-        //echo $sql //used to test sql statements being executed
+        echo $sql //show sql statements being executed
 		
         $db = dbConn::getConnection();
         $statement = $db->prepare($sql);
         $array = get_object_vars($this);
 		$statement->execute($array);
         
-        return $db->lastInsertId();
-
-
+        
+		if ($this->id == '') {
+			return $db->lastInsertId();
+		$return $this->id;
 	}
 
     private function insert() {
@@ -30,11 +38,17 @@ abstract class model {
         		
 	}
 
+	
+
 	private function update() {
-		$sql = "UPDATE $tableName SET WHERE";
+        $array = get_object_vars($this);
+        $tableName = $this::getTablename();
+        $str = implode(',', array_map("prepareValues", array_keys($array)));
+        $sql = "UPDATE " . $tableName . " SET " . $str . " WHERE id = :id";
+
         return $sql;
-       
-	}
+}
+
 
 	public function delete($id) {
         $db = dbConn::getConnection();
