@@ -49,10 +49,10 @@ $lastInsertedId=$data->save();
 
 //Delete
 //delete one record 
-echo "<h2>Delete One Record</h2>"; 
-$data = new account(); 
-$data = account::delete(2); 
-echo '<h3>Record deleted</h3>'; 
+//echo "<h2>Delete One Record</h2>"; 
+//$data = new account(); 
+//$data = account::delete(2); 
+//echo '<h3>Record deleted</h3>'; 
 
 
 ?>
