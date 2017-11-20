@@ -16,7 +16,7 @@ abstract class model {
 		
         $db = dbConn::getConnection();
         $statement = $db->prepare($sql);
-        $statement->execute();
+        $statement->execute($array);
         
         
 		echo 'I just saved record: ' . $this->id;
