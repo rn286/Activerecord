@@ -1,10 +1,15 @@
 <?php
 
+
+
 function prepareValues($s)  {
 
-    return $key . ' = ":"' . $key . '"';
+    if ($s == "id")
+        return null;
+    return $s . ' = :' . $s;
 
 }
+
 
 
 abstract class model {
@@ -14,7 +19,7 @@ abstract class model {
         } else {
             $sql = $this->update();
         }
-        echo $sql //show sql statements being executed
+        echo $sql; //show sql statements being executed
 		
         $db = dbConn::getConnection();
         $statement = $db->prepare($sql);
@@ -22,9 +27,9 @@ abstract class model {
 		$statement->execute($array);
         
         
-		if ($this->id == '') {
+		if ($this->id == '') 
 			return $db->lastInsertId();
-		$return $this->id;
+		return $this->id;
 	}
 
     private function insert() {
