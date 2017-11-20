@@ -14,7 +14,7 @@ abstract class model {
         $array = get_object_vars($this);
 		$statement->execute($array);
         
-        //If there is an ID then use LastInsert 
+        //If there is an ID then use LastInsert >>>> notes: http://php.net/manual/en/pdo.lastinsertid.php
 		if ($this->id == '') 
 			return $db->lastInsertId();
 		return $this->id;
@@ -34,7 +34,7 @@ abstract class model {
 	private function update() {
         $array = get_object_vars($this);
         $tableName = $this::getTablename();
-        $str = trim(implode(',', array_map(array("model", "prepareValues"), array_keys($array))), ",");
+        $str = trim(implode(',', array_map(array("model", "prepareValues"), array_keys($array))), ","); //trim to remove preceeding comma found in SQL exception. only workaround
         $sql = "UPDATE " . $tableName . " SET " . $str . " WHERE id = :id";
 
         return $sql;
