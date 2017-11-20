@@ -25,8 +25,8 @@ abstract class model {
 	}
 
     private function insert() {
+		$array = get_object_vars($this);
 		$tableName = $this::getTablename();
-        $array = get_object_vars($this);
         $columnString = implode(',', array_keys($array));
         $valueString = implode(',', array_map("prepareValues", $array));
 		$sql = "INSERT INTO " . $tableName . "(" . $columnString . ") VALUES (" . $valueString . ")";
