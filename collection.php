@@ -26,9 +26,9 @@ abstract class collection {
 	static public function findOne($id) {
 		$db = dbConn::getConnection();
 		$tableName = get_called_class();
-        $sql = 'SELECT * FROM ' . $tableName . ' WHERE id =' . $id;
+        $sql = 'SELECT * FROM ' . $tableName . ' WHERE id=?';
         $statement = $db->prepare($sql);
-        $statement->execute();
+        $statement->execute(array($id));
         $class = static::$modelName;
         $statement->setFetchMode(PDO::FETCH_CLASS, $class);
         $recordsSet =  $statement->fetchAll();
