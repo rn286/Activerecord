@@ -6,7 +6,6 @@ function prepareValues($s) {
 }
 
 abstract class model {
-	protected $tableName;
 	public function save() {
 		if ($this->id == '') {
             $sql = $this->insert();
