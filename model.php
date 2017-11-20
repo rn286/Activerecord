@@ -1,10 +1,5 @@
 <?php
 
-
-function prepareValues($s) {
-    return "'" . addslashes($s) . "'";
-}
-
 abstract class model {
 	public function save() {
 		if ($this->id == '') {
@@ -41,18 +36,18 @@ abstract class model {
        
 	}
 
-	public function delete($id) {
-        
+	public static function delete($id) {
         $db = dbConn::getConnection();
-		$modelName=static::$modelName;
-        $sql = 'DELETE FROM '.$tableName.' WHERE user_id=' .$id;
+        $tableName = $this::getTablename();
+        $sql = 'DELETE FROM '. $tableName . ' WHERE user_id=?';
         $statement = $db->prepare($sql);
-        $statement->execute();
+        
+		return $statement->execute($id);
+}
+		
 
-		echo 'I just deleted record' . $this->id;
 
-
-	}
+	
 }
 
 ?>
