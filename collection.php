@@ -1,7 +1,6 @@
 <?php
 
 abstract class collection {
-// has the query template for selecting all, sorting etc
 	static public function create() {
 		$model = new static::$modelName;
 
@@ -18,7 +17,7 @@ abstract class collection {
 		$class = static::$modelName;
 		$statement->setFetchMode(PDO::FETCH_CLASS, $class);
 		$recordSet = $statement->fetchAll();
-		//$recordSet = $statement->setFetchMode(PDO::FETCH_ASSOC); 
+
 		return $recordSet;
 
 	}

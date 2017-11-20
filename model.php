@@ -1,17 +1,5 @@
 <?php
 
-
-
-function prepareValues($s)  {
-
-    if ($s == "id")
-        return null;
-    return $s . ' = :' . $s;
-
-}
-
-
-
 abstract class model {
 	public function save() {
 		if ($this->id == '') {
@@ -19,14 +7,14 @@ abstract class model {
         } else {
             $sql = $this->update();
         }
-        echo $sql; //show sql statements being executed
+        echo "$sql <br>"; //show sql statements being executed; REMINDER to remove for final project
 		
         $db = dbConn::getConnection();
         $statement = $db->prepare($sql);
         $array = get_object_vars($this);
 		$statement->execute($array);
         
-        
+        //If there is an ID then use LastInsert 
 		if ($this->id == '') 
 			return $db->lastInsertId();
 		return $this->id;
@@ -42,18 +30,15 @@ abstract class model {
 		return $sql;
         		
 	}
-
 	
-
 	private function update() {
         $array = get_object_vars($this);
         $tableName = $this::getTablename();
-        $str = implode(',', array_map("prepareValues", array_keys($array)));
+        $str = trim(implode(',', array_map(array("model", "prepareValues"), array_keys($array))), ",");
         $sql = "UPDATE " . $tableName . " SET " . $str . " WHERE id = :id";
 
         return $sql;
-}
-
+	}
 
 	public function delete($id) {
         $db = dbConn::getConnection();
@@ -62,10 +47,15 @@ abstract class model {
         $statement = $db->prepare($sql);
         
 		return $statement->execute(array($id));
-}
+	}
+		//To loop through each value 
+	private function prepareValues($s)  {
+		if ($s == "id")
+			return null;
+		return $s . ' = :' . $s;
+
+	}
 		
-
-
 	
 }
 
