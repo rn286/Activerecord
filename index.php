@@ -47,6 +47,8 @@ $data->gender="M";
 $data->password="rtkeker";
 $lastInsertedId=$data->save();
 
+echo "I just saved record $lastInsertedId";
+
 //Delete
 //delete one record 
 //echo "<h2>Delete One Record</h2>"; 

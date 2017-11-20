@@ -12,14 +12,14 @@ abstract class model {
         } else {
             $sql = $this->update();
         }
-        echo $sql;
+        //echo $sql //used to test sql statements being executed
 		
         $db = dbConn::getConnection();
         $statement = $db->prepare($sql);
         $array = get_object_vars($this);
 		$statement->execute($array);
         
-        echo 'I just saved record: ' . $db->lastInsertId();
+        return $db->lastInsertId();
 
 
 	}
