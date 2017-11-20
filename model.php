@@ -27,7 +27,7 @@ abstract class model {
 		$array = get_object_vars($this);
 		$tableName = $this::getTablename();
         $columnString = implode(',', array_keys($array));
-        $valueString = implode(',', array_map("prepareValues", $array));
+        $valueString = ":".implode(',:', array_keys($array));
 		$sql = "INSERT INTO " . $tableName . "(" . $columnString . ") VALUES (" . $valueString . ")";
         
 		return $sql;
@@ -38,8 +38,6 @@ abstract class model {
 		$sql = "UPDATE $tableName SET WHERE";
         return $sql;
        
-	   echo 'I just updated record' . $this->id;
-
 	}
 
 	public function delete($id) {
