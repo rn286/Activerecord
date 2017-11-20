@@ -9,9 +9,10 @@ final class todo extends model {
     public $message;
     public $isdone;
     
-    public function __construct() {
-        $this->tableName = 'todos';
-	}
-}
-
+  protected static $modelName = 'todo'; 
+  public static function getTablename(){ 
+  
+         return 'todos'; 
+	 } 
+ } 
 ?>
