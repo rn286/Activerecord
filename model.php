@@ -19,7 +19,8 @@ abstract class model {
         $array = get_object_vars($this);
 		$statement->execute($array);
         
-        echo 'I just saved record: ' . $this->id;
+        echo 'I just saved record: ' . $db->lastInsertId();
+
 
 	}
 
