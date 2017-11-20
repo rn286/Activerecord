@@ -13,8 +13,7 @@ final class account extends model {
   protected static $modelName = 'account'; 
   public static function getTablename(){ 
   
-         $tableName='accounts'; 
-         return $tableName; 
+         return 'accounts'; 
      } 
  } 
   
