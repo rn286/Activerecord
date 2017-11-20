@@ -1,5 +1,5 @@
 <?php
-
+//Still need to add table headers...ran out of time. 
 class buildTable{
     public static function buildTableFromFullArray($arr){
         $tableBuild = '<table border="3" cellpadding="3" cellspacing="1">';
